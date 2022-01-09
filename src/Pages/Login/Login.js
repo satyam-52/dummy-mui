@@ -15,16 +15,15 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
 import Copyright from "../../Components/Shared/Copyright";
+import * as REGEX from "../../utils/regex";
 
 const theme = createTheme();
 
 export default function SignIn() {
   const history = useHistory();
-  let emailRegex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const validateInput = (data) => {
-    console.log({ emailregex: emailRegex.test(data.email) });
-    return !emailRegex.test(data.email);
+    console.log({ emailregex: REGEX.EMAIL_REGEX.test(data.email) });
+    return !REGEX.EMAIL_REGEX.test(data.email);
   };
 
   const handleSubmit = (event) => {
